@@ -57,7 +57,7 @@ public class Anagram {
 		String new_str = "";
 
 		for (int i = 0; i < str.length(); i++){
-			if (str.charAt(i) >= 97 && str.charAt(i) <=122){
+			if ((str.charAt(i) >= 97 && str.charAt(i) <=122) || (str.charAt(i) == 32)){
 				new_str += str.charAt(i);
 			}
 		}
@@ -70,8 +70,6 @@ public class Anagram {
 		String ordered_str = preProcess(str);
 		String mid_str = ordered_str;
 		String random_str = "";
-
-		//System.out.println(ordered_str.length());
 
 		for (int i=0; i < ordered_str.length(); i ++) {
 			int index = (int)(Math.random() * mid_str.length());
