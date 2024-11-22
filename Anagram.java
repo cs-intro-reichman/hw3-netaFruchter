@@ -6,6 +6,7 @@ public class Anagram {
 		System.out.println(isAnagram("William Shakespeare","I am a weakish speller")); // true
 		System.out.println(isAnagram("Madam Curie","Radium came")); // true
 		System.out.println(isAnagram("Tom Marvolo Riddle","I am Lord Voldemort")); // true
+		System.out.println(isAnagram("Tom Marvolo Riddle","I am Lord Voldemortfefe")); // true
 
 		// Tests the preProcess function.
 		System.out.println(preProcess("What? No way!!!"));
@@ -16,7 +17,7 @@ public class Anagram {
 		// Performs a stress test of randomAnagram 
 		String str = "1234567";
 		Boolean pass = true;
-		//// 10 can be changed to much larger values, like 1000
+		// 10 can be changed to much larger values, like 1000
 		for (int i = 0; i < 10; i++) {
 			String randomAnagram = randomAnagram(str);
 			System.out.println(randomAnagram);
@@ -28,22 +29,56 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
+		String ordered_str1 = preProcess(str1);
+		String ordered_str2 = preProcess(str2);
+		int counter = 0;
+		ordered_str1 = ordered_str1.replace(" ", "");
+		ordered_str2 = ordered_str2.replace(" ", "");
+		
+
+		if (ordered_str1.length() != ordered_str2.length()) {
+			return false;
+		}
+
+		for (int i = 0; i < ordered_str1.length(); i++){
+			for (int j = 0; j < ordered_str2.length(); j++){
+				if (ordered_str1.charAt(i) == ordered_str2.charAt(j)) {
+					counter++;
+					break;
+				}
+			}
+			if (counter != i+1) {return false;}
+		}
+		return true;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		str = str.toLowerCase();
+		String new_str = "";
+
+		for (int i = 0; i < str.length(); i++){
+			if ((str.charAt(i) >= 97 && str.charAt(i) <=122) || (str.charAt(i) == 32)){
+				new_str += str.charAt(i);
+			}
+		}
+		return new_str;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		String ordered_str = preProcess(str);
+		String mid_str = ordered_str;
+		String random_str = "";
+
+		for (int i=0; i < ordered_str.length(); i ++) {
+			int index = (int)(Math.random() * mid_str.length());
+			random_str += mid_str.charAt(index);
+			mid_str = mid_str.replaceFirst(mid_str.charAt(index)+"", "");	
+		}
+		return random_str;
 	}
 }
