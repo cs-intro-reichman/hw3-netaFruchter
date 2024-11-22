@@ -79,7 +79,7 @@ public class Algebra {
 			x2 = times(x2, x);
 		}
 
-		if (x < 0){x2 = times(-1, x2);}
+		if (x < 0 && n%2==1){x2 = times(-1, x2);}
 		return x2;
 	}
 
