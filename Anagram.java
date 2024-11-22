@@ -32,6 +32,9 @@ public class Anagram {
 		String ordered_str1 = preProcess(str1);
 		String ordered_str2 = preProcess(str2);
 		int counter = 0;
+		ordered_str1 = ordered_str1.replace(" ", "");
+		ordered_str2 = ordered_str2.replace(" ", "");
+		
 
 		if (ordered_str1.length() != ordered_str2.length()) {
 			return false;

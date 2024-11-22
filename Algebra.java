@@ -11,9 +11,9 @@ public class Algebra {
    		//System.out.println(minus(2,7));  // 2 - 7
  		//System.out.println(times(-3,-4));  // 3 * 4
    		//System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
-   		//System.out.println(pow(5,0));      // 5^3
+   		System.out.println(pow(-5,3));      // 5^3
    		//System.out.println(pow(3,5));      // 3^5
-   		System.out.println(div(-3,-4));   // 12 / 3    
+   		//System.out.println(div(-3,-4));   // 12 / 3    
    		//System.out.println(div(5,-10));    // 5 / 5  
    		//System.out.println(div(25,7));   // 25 / 7
    		//System.out.println(mod(25,7));   // 25 % 7
@@ -78,6 +78,8 @@ public class Algebra {
 		for (int i = 1; i < n; i++){
 			x2 = times(x2, x);
 		}
+
+		if (x < 0){x2 = times(-1, x2);}
 		return x2;
 	}
 
